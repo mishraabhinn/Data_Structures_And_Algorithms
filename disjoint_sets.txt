@@ -1,0 +1,87 @@
+//merge operation
+
+
+merge(a,b)
+{
+a=find(a);
+b=find(b);
+
+if(a==b)
+return;
+else
+parent[a]=b;
+	
+}
+
+
+
+
+//iterative find function
+
+find(a)
+{
+	while(parent[a]>0)
+	{
+	a=parent[a];
+	}	
+
+	return a;
+
+}
+
+
+// recursive function for path compression
+
+find(a)
+{
+	if(parent[a]==-1) return a
+	else
+	return parent[a]=find(parent[a])
+}
+
+
+
+
+// uninon function 
+
+union(a,b)
+{
+	parent[a]+=parent[b];
+	parent[b]=a;
+
+}
+
+
+//Path Compression
+
+//recursive function
+
+
+find(a)
+{
+	if (parent[a]<0)
+	{
+	return a;
+
+	}
+
+	else
+	{int x=find(parent[a]);
+	parent[a]=x;
+	return x;
+}
+
+}
+
+
+
+
+//recursive function for path compression
+
+find(a)
+{
+	if(parent[a]<0)
+	return a;
+	else
+	retunr parent[a]=find(parent[a]);
+}

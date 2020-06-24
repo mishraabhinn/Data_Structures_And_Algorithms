@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+vector<ll> arr[100001];
+ll vis[100001];
+void dfs(ll node)
+{
+
+vis[node]=1;
+for(int child:arr[node])
+	if(!vis[child])
+		dfs(child);
+
+
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    ll m,n,a,b;
+    // m is the number of edges. n is the number of nodes. 
+    cin>>n>>m;
+    for(ll i=1;i<=m;i++)
+    {
+    	cin>>a>>b;
+    	arr[a].push_back(b);
+    	arr[b].push_back(a);
+    	
+    }
+    ll count=0;
+    for(ll i=1;i<=n;i++)
+    	if(!vis[i])
+    	{
+    		count+=1;
+    		dfs(i);
+    	}
+if(count==1 && m<=n-1)
+{
+	cout<<"YES"<<"\n";
+}
+
+else
+{
+	cout<<"NO"<<"\n";
+}
+    return 0;
+}
