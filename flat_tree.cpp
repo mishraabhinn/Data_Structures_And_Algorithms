@@ -58,19 +58,18 @@ int ft[1001], s[1001], t[1001];
 int timer;
 vector<int> ar[1001];
 
-void dfs(int node, int node)
+void dfs(int node, int par)
 {
 	s[node] = timer;
 	ft[timer] = node;
 	timer++;
 	for (int child : ar[node])
-	{
 		if (child != par)
 			dfs(child, node);
-		t[node] = timer;
-		ft[timer] = node;
-		timer++;
-	}
+	t[node] = timer;
+	ft[timer] = node;
+	timer++;
+
 }
 
 int main() {
@@ -98,7 +97,7 @@ int main() {
 	timer = 1;
 	dfs(1, -1);
 	cout << "S={";
-	for (itn i = 1; i <= n; i++)
+	for (int i = 1; i <= n; i++)
 	{
 		cout << s[i] << ", " ;
 
@@ -106,13 +105,13 @@ int main() {
 	cout << " }" << "\n";
 
 	cout << "T= {";
-	for (itn i = 1; i <= n; i++) {
+	for (int i = 1; i <= n; i++) {
 		cout << t[i] << " ,";
 	}
 	cout << " }" << "\n";
 
 	cout << "FT= {";
-	for (itn i = 1; i <= 2 * n; i++) {
+	for (int i = 1; i <= 2 * n; i++) {
 		cout << ft[i] << " ,";
 	}
 	cout << " }" << "\n";
